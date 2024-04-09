@@ -6,4 +6,12 @@ import javax.persistence.Entity;
 public class Gestionnaire extends Compte{
 
 	public Gestionnaire() {}
+	
+	public void supprimerClientsObsoletes() {
+		//TODO WHEN DAOClient
+	};
+	
+	public void supprimerCommandesObsoletes() {
+		//TODO WHEN DAOCimmandes
+	};
 }
