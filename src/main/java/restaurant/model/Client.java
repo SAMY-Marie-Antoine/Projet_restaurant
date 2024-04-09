@@ -20,5 +20,9 @@ public class Client extends Compte {
 	public void setHistCommandes(List<Commande> histCommandes) {
 		this.histCommandes = histCommandes;
 	}
+	
+	public void dateDerniereActivie() {
+		//TODO avec DAOCommande
+	}
 
 }
