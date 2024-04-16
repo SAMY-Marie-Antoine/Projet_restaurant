@@ -12,6 +12,6 @@ public class Gestionnaire extends Compte{
 	};
 	
 	public void supprimerCommandesObsoletes() {
-		//TODO WHEN DAOCimmandes
+		//TODO WHEN DAOCommandes
 	};
 }

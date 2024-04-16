@@ -1,10 +1,13 @@
 package restaurant.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -19,11 +22,24 @@ public class Avis {
 	@Column(length = 250, nullable=false)
 	private String avis;
 	@ManyToOne
+	@JoinColumn(name="id_client",nullable=false)
 	private Client client;
 	@OneToOne
+	@JoinColumn(name="id_commande",nullable=false)
 	private Commande commande;
+	@Column(nullable=false)
+	private LocalDateTime dateHeure;
 	
 	public Avis() {}
+
+	
+	public Avis(Integer id, String avis, Client client, Commande commande, LocalDateTime dateHeure) {
+		this.id = id;
+		this.avis = avis;
+		this.client = client;
+		this.commande = commande;
+		this.dateHeure = LocalDateTime.now();
+	}
 
 	public String getAvis() {
 		return avis;

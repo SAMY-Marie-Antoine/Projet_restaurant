@@ -33,15 +33,29 @@ public class Produit {
 	private String smallPhoto;
 	@Column
 	private String bigPhoto;
-	@Column
-	private List<Particularite> particularite=new ArrayList();
+	@Column(nullable = false)
+	private boolean allergie_oeufs;
+	@Column(nullable = false)
+	private boolean allergie_gluten;
+	@Column(nullable = false)
+	private boolean allergie_arachides;
+	@Column(nullable = false)
+	private boolean allergie_lait;
+	@Column(nullable = false)
+	private boolean allergie_soja;
+	@Column(nullable = false)
+	private boolean hallal;
+	@Column(nullable = false)
+	private boolean vegan;
 	
 	public Produit() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	public Produit(Integer id, String libelle, double prix, boolean disponible, boolean dansFormule, TypeProduit type, List<Particularite> particularite) {
+		
+	public Produit(Integer id, String libelle, double prix, boolean disponible, boolean dansFormule, TypeProduit type,
+			String smallPhoto, String bigPhoto, boolean allergie_oeufs, boolean allergie_gluten,
+			boolean allergie_arachides, boolean allergie_lait, boolean allergie_soja, boolean hallal, boolean vegan) {
 		this.id = id;
 		this.libelle = libelle;
 		this.prix = prix;
@@ -49,10 +63,16 @@ public class Produit {
 		this.dansFormule = dansFormule;
 		this.type = type;
 		this.smallPhoto = id + "s.png";
-		this.bigPhoto =  id + "b.png";;
-		this.particularite = particularite;
+		this.bigPhoto =  id + "b.png";
+		this.allergie_oeufs = allergie_oeufs;
+		this.allergie_gluten = allergie_gluten;
+		this.allergie_arachides = allergie_arachides;
+		this.allergie_lait = allergie_lait;
+		this.allergie_soja = allergie_soja;
+		this.hallal = hallal;
+		this.vegan = vegan;
 	}
-	
+
 	//#Todo à faire au niveau du front
 	
 	public void afficherDetail() {}
@@ -137,17 +157,74 @@ public class Produit {
 	}
 
 
-	public List<Particularite> getParticularite() {
-		return particularite;
+	public boolean isAllergie_oeufs() {
+		return allergie_oeufs;
 	}
 
 
-	public void setParticularite(List<Particularite> particularite) {
-		this.particularite = particularite;
+	public void setAllergie_oeufs(boolean allergie_oeufs) {
+		this.allergie_oeufs = allergie_oeufs;
 	}
 
 
-	
+	public boolean isAllergie_gluten() {
+		return allergie_gluten;
+	}
+
+
+	public void setAllergie_gluten(boolean allergie_gluten) {
+		this.allergie_gluten = allergie_gluten;
+	}
+
+
+	public boolean isAllergie_arachides() {
+		return allergie_arachides;
+	}
+
+
+	public void setAllergie_arachides(boolean allergie_arachides) {
+		this.allergie_arachides = allergie_arachides;
+	}
+
+
+	public boolean isAllergie_lait() {
+		return allergie_lait;
+	}
+
+
+	public void setAllergie_lait(boolean allergie_lait) {
+		this.allergie_lait = allergie_lait;
+	}
+
+
+	public boolean isAllergie_soja() {
+		return allergie_soja;
+	}
+
+
+	public void setAllergie_soja(boolean allergie_soja) {
+		this.allergie_soja = allergie_soja;
+	}
+
+
+	public boolean isHallal() {
+		return hallal;
+	}
+
+
+	public void setHallal(boolean hallal) {
+		this.hallal = hallal;
+	}
+
+
+	public boolean isVegan() {
+		return vegan;
+	}
+
+
+	public void setVegan(boolean vegan) {
+		this.vegan = vegan;
+	}
 	
 
 }

@@ -8,9 +8,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Client extends Compte {
 
-	@OneToMany(mappedBy="commandes")
+	@OneToMany(mappedBy="client")
 	private List<Commande> histCommandes;
-	
+		
 	public Client() {}
 
 	public List<Commande> getHistCommandes() {
