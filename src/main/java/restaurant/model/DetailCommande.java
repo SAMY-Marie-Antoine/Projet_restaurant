@@ -11,7 +11,7 @@ public class DetailCommande {
 	
 	private double prix;
 	private Commande commande;
-	private Article article;
+	private Produit produit;
 	
 	
 	

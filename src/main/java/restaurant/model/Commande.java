@@ -23,10 +23,10 @@ public class Commande {
 	private Client client;
 	@Column
 	private String commentaire;
-	@Column
-	private List<Formule> formules=new ArrayList();
-	@Column
-	private List<Produit> produits=new ArrayList();
+	//@Column
+	//private List<Formule> formules=new ArrayList();
+	//@Column
+	//private List<Produit> produits=new ArrayList();
 
 	//private LocalDate date_commande;
 
@@ -34,11 +34,36 @@ public class Commande {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public String getCommentaire() {
+		return commentaire;
+	}
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
+	}
+
 
 
 	//#Todo
 
-	public double calculPrixTotal() {
+	/*public double calculPrixTotal() {
+		
 		double montant=0;
 		for(Formule f : formules) {
 			montant=montant+ f.getPrix();
@@ -48,6 +73,6 @@ public class Commande {
 		}
 
 		return montant;
-	}
+	}*/
 
 }
