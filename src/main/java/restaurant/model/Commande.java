@@ -1,5 +1,7 @@
 package restaurant.model;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,11 @@ public class Commande {
 	private Client client;
 	@Column
 	private String commentaire;
+	@Column
+	private LocalDate dateCommande;
+	@Column
+	private LocalTime heureCommande;
+	
 	//@Column
 	//private List<Formule> formules=new ArrayList();
 	//@Column
