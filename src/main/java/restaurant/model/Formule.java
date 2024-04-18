@@ -23,21 +23,31 @@ public class Formule {
 	@Column(nullable = false )
 	private double prix;
 	@Column(nullable = false )
-	private List<Produit> produits=new ArrayList();
+	private List<TypeProduit> typeProduits=new ArrayList();
 	
 	public Formule() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Formule(Integer id, String libelle, double prix, List<Produit> produits) {
+	
+	public Formule(Integer id, String libelle, double prix, List<TypeProduit> typeProduits) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.prix = prix;
-		this.produits = produits;
+		this.typeProduits = typeProduits;
+	}
+	
+	
+	
+	public Formule(String libelle, double prix, List<TypeProduit> typeProduits) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.typeProduits = typeProduits;
 	}
 
-	
+
 	//#Todo
 	
 	public void afficherDetail() {}
@@ -66,13 +76,26 @@ public class Formule {
 		this.prix = prix;
 	}
 
-	public List<Produit> getProduit() {
-		return produits;
+
+
+
+	public List<TypeProduit> getTypeProduits() {
+		return typeProduits;
 	}
 
-	public void setProduit(List<Produit> produits) {
-		this.produits = produits;
+
+
+
+	public void setTypeProduits(List<TypeProduit> typeProduits) {
+		this.typeProduits = typeProduits;
 	}
+
+
+
+
+	
+
+	
 	
 	
 	
