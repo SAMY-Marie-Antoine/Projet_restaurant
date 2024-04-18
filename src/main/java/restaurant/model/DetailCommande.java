@@ -2,6 +2,8 @@ package restaurant.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,14 +20,18 @@ public class DetailCommande {
 	private int qty;
 	@Column
 	private double prix;
-	@Column
 	@ManyToOne
+	//@JoinColumn(name="")
 	private Commande commande;
 	//private Produit produit;
 	@ManyToOne   //@MANYTOMANY
+	//@JoinColumn(name="")
 	private Produit produitPosteCommande;
 	@Column
-	private Boolean isFormule;
+	private Boolean dansFormule;
+	@Enumerated(EnumType.STRING)
+	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entree','Plat','Dessert','Boisson')")
+	private TypeProduit type;
 	
 	
 	

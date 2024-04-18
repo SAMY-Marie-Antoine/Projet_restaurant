@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -24,10 +25,14 @@ public class Commande {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@ManyToOne
+	//@JoinColumn(name="")
 	private Client client;
 	@OneToOne
+	//@JoinColumn(name="")
 	private Avis avis;
+	//@JoinColumn(name="")
 	@OneToMany
+	//@JoinColumn(name="")
 	private List<DetailCommande> detailCommandes;
 	@Column(length=140)
 	private String commentaire;
