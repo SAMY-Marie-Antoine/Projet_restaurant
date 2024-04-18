@@ -103,16 +103,19 @@ public class Commande {
 
 	//#Todo
 
-	/*public double calculPrixTotal() {
+	public double calculPrixTotal() {
+		
+		//List<DetailCommande>  lDCcmd = this.detailCommandes;
+	    DetailCommande dCmd = new DetailCommande();
 		
 		double montant=0;
-		for(Formule f : formules) {
-			montant=montant+ f.getPrix();
+		int idx;
+		for (idx = 0; idx < this.detailCommandes.size(); idx++) {
+			dCmd  = this.detailCommandes.get(idx);
+		
+			montant=montant+ dCmd.getPrix();
 		}
-		for(Produit p : produits) {
-			montant=montant+ p.getPrix();
-		}
-
 		return montant;
-	}*/
+	
+	}
 }
