@@ -10,4 +10,6 @@ import restaurant.model.TypeProduit;
 public interface IDAOProduit extends JpaRepository<Produit,Integer>{
 
     public List<Produit> findByType(TypeProduit type);
+    
+    
 }
