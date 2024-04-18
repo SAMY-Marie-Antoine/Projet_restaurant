@@ -10,6 +10,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 @Table(name="compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -18,8 +22,10 @@ public abstract class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	protected Integer id;
 	@Column(length = 30, nullable=false, unique=true)
+	@JsonView(Views.Common.class)
 	protected String username;
 	
 	public Compte() {}

@@ -12,36 +12,53 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 @Table(name="produit")
 public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.CommandeWithVentes.class)
 	private Integer id;
 	@Column(nullable = false,length = 35)
+	@JsonView(Views.CommandeWithVentes.class)
 	private String libelle;
 	@Column(nullable = false,columnDefinition="DECIMAL(5,2)")
+	@JsonView(Views.CommandeWithVentes.class)
 	private double prix;
 	@Column(nullable=false,columnDefinition="INT")
+	@JsonView(Views.CommandeWithVentes.class)
 	private int stock;
 	@Column(nullable=false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean dansFormule;
 	@Enumerated(EnumType.STRING)
 	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entree','Plat','Dessert','Boisson')")
+	@JsonView(Views.CommandeWithVentes.class)
 	private TypeProduit type;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean allergie_oeufs;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean allergie_gluten;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean allergie_arachides;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean allergie_lait;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean allergie_soja;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean hallal;
 	@Column(nullable = false)
+	@JsonView(Views.CommandeWithVentes.class)
 	private boolean vegan;
 	
 	public Produit() {}

@@ -2,13 +2,19 @@ package restaurant.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 //Ajouter info selon mapping choisi inheritence Article
 public class Menu extends Article{
 
 	@OneToMany
+	@JsonView(Views.ProduitWithVentes.class)
 	private  List<Produit>  produits;
 	@ManyToOne
+	@JsonView(Views.MenuWithFormules.class)
 	private Formule formule;
 	
 	public Menu() {	}

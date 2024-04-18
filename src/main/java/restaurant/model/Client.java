@@ -5,11 +5,17 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 @DiscriminatorValue("Client")
 public class Client extends Compte {
 
+	
 	@OneToMany(mappedBy="client")
+	@JsonView(Views.CommandeWithVentes.class)
 	private List<Commande> histCommandes;
 		
 	public Client() {}

@@ -12,22 +12,31 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 @Table(name="avis")
 public class Avis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(length = 250, nullable=false)
+	@JsonView(Views.Common.class)
 	private String avis;
 	@ManyToOne
 	@JoinColumn(name="id_client",nullable=false)
+	@JsonView(Views.ClientWithAchats.class)
 	private Client client;
 	@OneToOne
 	@JoinColumn(name="id_commande",nullable=false)
+	@JsonView(Views.Client.class)
 	private Commande commande;
 	@Column(nullable=false)
+	@JsonView(Views.Common.class)
 	private LocalDateTime dateHeure;
 	
 	public Avis() {}

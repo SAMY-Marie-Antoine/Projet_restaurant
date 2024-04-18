@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import restaurant.view.Views;
+
 @Entity
 @Table(name="formule")
 public class Formule {
@@ -17,13 +21,17 @@ public class Formule {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(nullable = false,length = 35 )
+	@JsonView(Views.Common.class)
 	private String libelle;
 	@Column(nullable =false,columnDefinition="DECIMAL(5,2)")
+	@JsonView(Views.Common.class)
 	private double prix;
 	//Check mapping ManyToMany?
 	@Column(nullable = false)
+	@JsonView(Views.ProduitWithVentes.class)
 	private List<TypeProduit> typeProduits=new ArrayList();
 	
 	public Formule() {}
