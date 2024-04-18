@@ -18,21 +18,17 @@ public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false,length = 35 )
+	@Column(nullable = false,length = 35)
 	private String libelle;
-	@Column(nullable = false )
+	@Column(nullable = false,columnDefinition="DECIMAL(5,2)")
 	private double prix;
-	@Column(nullable = false )
-	private boolean disponible;
-	@Column
+	@Column(nullable=false,columnDefinition="INT")
+	private int stock;
+	@Column(nullable=false)
 	private boolean dansFormule;
 	@Enumerated(EnumType.STRING)
 	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entree','Plat','Dessert','Boisson')")
 	private TypeProduit type;
-	@Column
-	private String smallPhoto;
-	@Column
-	private String bigPhoto;
 	@Column(nullable = false)
 	private boolean allergie_oeufs;
 	@Column(nullable = false)
@@ -48,22 +44,31 @@ public class Produit {
 	@Column(nullable = false)
 	private boolean vegan;
 	
-	public Produit() {
-		// TODO Auto-generated constructor stub
-	}
+	public Produit() {}
 	
-		
-	public Produit(Integer id, String libelle, double prix, boolean disponible, boolean dansFormule, TypeProduit type,
-			String smallPhoto, String bigPhoto, boolean allergie_oeufs, boolean allergie_gluten,
-			boolean allergie_arachides, boolean allergie_lait, boolean allergie_soja, boolean hallal, boolean vegan) {
+
+	public Produit(Integer id, String libelle, double prix, int stock, boolean dansFormule, TypeProduit type, boolean allergie_oeufs, boolean allergie_gluten, boolean allergie_arachides, boolean allergie_lait, boolean allergie_soja, boolean hallal, boolean vegan) {
 		this.id = id;
 		this.libelle = libelle;
 		this.prix = prix;
-		this.disponible = disponible;
+		this.stock = stock;
 		this.dansFormule = dansFormule;
 		this.type = type;
-		this.smallPhoto = id + "s.png";
-		this.bigPhoto =  id + "b.png";
+		this.allergie_oeufs = allergie_oeufs;
+		this.allergie_gluten = allergie_gluten;
+		this.allergie_arachides = allergie_arachides;
+		this.allergie_lait = allergie_lait;
+		this.allergie_soja = allergie_soja;
+		this.hallal = hallal;
+		this.vegan = vegan;
+	}
+	
+	public Produit(String libelle, double prix, int stock, boolean dansFormule, TypeProduit type, boolean allergie_oeufs, boolean allergie_gluten, boolean allergie_arachides, boolean allergie_lait, boolean allergie_soja, boolean hallal, boolean vegan) {
+		this.libelle = libelle;
+		this.prix = prix;
+		this.stock = stock;
+		this.dansFormule = dansFormule;
+		this.type = type;
 		this.allergie_oeufs = allergie_oeufs;
 		this.allergie_gluten = allergie_gluten;
 		this.allergie_arachides = allergie_arachides;
@@ -73,10 +78,6 @@ public class Produit {
 		this.vegan = vegan;
 	}
 
-	//#Todo à faire au niveau du front
-	
-	public void afficherDetail() {}
-	
 	public Integer getId() {
 		return id;
 	}
@@ -86,6 +87,53 @@ public class Produit {
 		this.id = id;
 	}
 
+
+	public int getStock() {
+		return this.stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+
+	public boolean getDansFormule() {
+		return this.dansFormule;
+	}
+
+
+	public boolean getAllergie_oeufs() {
+		return this.allergie_oeufs;
+	}
+
+
+	public boolean getAllergie_gluten() {
+		return this.allergie_gluten;
+	}
+
+
+	public boolean getAllergie_arachides() {
+		return this.allergie_arachides;
+	}
+
+
+	public boolean getAllergie_lait() {
+		return this.allergie_lait;
+	}
+
+
+	public boolean getAllergie_soja() {
+		return this.allergie_soja;
+	}
+
+
+	public boolean getHallal() {
+		return this.hallal;
+	}
+
+
+	public boolean getVegan() {
+		return this.vegan;
+	}
 
 	public String getLibelle() {
 		return libelle;
@@ -106,17 +154,6 @@ public class Produit {
 		this.prix = prix;
 	}
 
-
-	public boolean isDisponible() {
-		return disponible;
-	}
-
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
-
-
 	public boolean isDansFormule() {
 		return dansFormule;
 	}
@@ -135,27 +172,6 @@ public class Produit {
 	public void setType(TypeProduit type) {
 		this.type = type;
 	}
-
-
-	public String getSmallPhoto() {
-		return smallPhoto;
-	}
-
-
-	public void setSmallPhoto(String smallPhoto) {
-		this.smallPhoto = smallPhoto;
-	}
-
-
-	public String getBigPhoto() {
-		return bigPhoto;
-	}
-
-
-	public void setBigPhoto(String bigPhoto) {
-		this.bigPhoto = bigPhoto;
-	}
-
 
 	public boolean isAllergie_oeufs() {
 		return allergie_oeufs;

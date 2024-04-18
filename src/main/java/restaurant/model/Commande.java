@@ -1,6 +1,7 @@
 package restaurant.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,29 +23,34 @@ public class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(nullable = false,length = 35 )
 	@ManyToOne
 	private Client client;
 	@OneToOne
 	private Avis avis;
 	@OneToMany
 	private List<DetailCommande> detailCommandes;
-	@Column
+	@Column(length=140)
 	private String commentaire;
-	@Column
-	private LocalDate dateCommande;
-	@Column
-	private LocalTime heureCommande;
-	
-	//@Column
-	//private List<Formule> formules=new ArrayList();
-	//@Column
-	//private List<Produit> produits=new ArrayList();
+	@Column(nullable=false,columnDefinition="DATETIME")
+	private LocalDateTime dateHeureCommande;
+		
+	public Commande() {	}
 
-	//private LocalDate date_commande;
+	public Commande(Integer id, Client client, Avis avis, List<DetailCommande> detailCommandes, String commentaire) {
+		this.id = id;
+		this.client = client;
+		this.avis = avis;
+		this.detailCommandes = detailCommandes;
+		this.commentaire = commentaire;
+		this.dateHeureCommande = LocalDateTime.now();
+	}
 
-	public Commande() {
-		// TODO Auto-generated constructor stub
+	public Commande(Client client, Avis avis, List<DetailCommande> detailCommandes, String commentaire) {
+		this.client = client;
+		this.avis = avis;
+		this.detailCommandes = detailCommandes;
+		this.commentaire = commentaire;
+		this.dateHeureCommande = LocalDateTime.now();
 	}
 
 	public Integer getId() {
@@ -71,7 +77,29 @@ public class Commande {
 		this.commentaire = commentaire;
 	}
 
+	public Avis getAvis() {
+		return this.avis;
+	}
 
+	public void setAvis(Avis avis) {
+		this.avis = avis;
+	}
+
+	public List<DetailCommande> getDetailCommandes() {
+		return this.detailCommandes;
+	}
+
+	public void setDetailCommandes(List<DetailCommande> detailCommandes) {
+		this.detailCommandes = detailCommandes;
+	}
+
+	public LocalDateTime getDateHeureCommande() {
+		return this.dateHeureCommande;
+	}
+
+	public void setDateHeureCommande(LocalDateTime dateHeureCommande) {
+		this.dateHeureCommande = dateHeureCommande;
+	}
 
 	//#Todo
 
@@ -87,5 +115,4 @@ public class Commande {
 
 		return montant;
 	}*/
-
 }

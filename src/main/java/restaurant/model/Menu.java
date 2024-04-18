@@ -1,57 +1,52 @@
 package restaurant.model;
 
-public class Menu {
-	private  Produit  produit;
+import java.util.List;
+
+@Entity
+//Ajouter info selon mapping choisi inheritence Article
+public class Menu extends Article{
+
+	@OneToMany
+	private  List<Produit>  produits;
+	@ManyToOne
 	private Formule formule;
-	private calulPrix calculPrix;
 	
+	public Menu() {	}
 	
-	public Menu(Produit produit, Formule formule, calulPrix calculPrix) {
-		this.produit = produit;
+	public Menu(Integer id, DetailCommande detailCommande,List<Produit> produits, Formule formule) {
+		super(id, detailCommande);
+		this.produits = produits;
 		this.formule = formule;
-		this.calculPrix = calculPrix;
 	}
 
-
-	public Produit getProduit() {
-		return produit;
+	public Menu(DetailCommande detailCommande,List<Produit> produits, Formule formule) {
+		super(detailCommande);
+		this.produits = produits;
+		this.formule = formule;
 	}
 
-
-	public void setProduit(Produit produit) {
-		this.produit = produit;
+	public List<Produit> getProduits() {
+		return this.produits;
 	}
 
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
 
 	public Formule getFormule() {
 		return formule;
 	}
 
-
 	public void setFormule(Formule formule) {
 		this.formule = formule;
 	}
 
-
-	public calulPrix getCalculPrix() {
-		return calculPrix;
-	}
-
-
-	public void setCalculPrix(calulPrix calculPrix) {
-		this.calculPrix = calculPrix;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Menu [produit=" + produit + "]";
+		return "{" +
+			" produits='" + getProduits() + "'" +
+			", formule='" + getFormule() + "'" +
+			"}";
 	}
-	
-	
-	
-	
-	
-	
 
 }

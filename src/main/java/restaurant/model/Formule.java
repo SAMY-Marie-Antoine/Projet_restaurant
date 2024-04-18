@@ -20,37 +20,30 @@ public class Formule {
 	private Integer id;
 	@Column(nullable = false,length = 35 )
 	private String libelle;
-	@Column(nullable = false )
+	@Column(nullable =false,columnDefinition="DECIMAL(5,2)")
 	private double prix;
-	@Column(nullable = false )
+	//Check mapping ManyToMany?
+	@Column(nullable = false)
 	private List<TypeProduit> typeProduits=new ArrayList();
 	
-	public Formule() {
-		// TODO Auto-generated constructor stub
-	}
+	public Formule() {}
 
-	
 	public Formule(Integer id, String libelle, double prix, List<TypeProduit> typeProduits) {
-		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.prix = prix;
 		this.typeProduits = typeProduits;
 	}
 	
-	
-	
 	public Formule(String libelle, double prix, List<TypeProduit> typeProduits) {
-		super();
 		this.libelle = libelle;
 		this.prix = prix;
 		this.typeProduits = typeProduits;
 	}
-
-
-	//#Todo
 	
-	public void afficherDetail() {}
+	public void afficherDetail() {
+		//#Todo
+	}
 	
 	public Integer getId() {
 		return id;
@@ -76,29 +69,12 @@ public class Formule {
 		this.prix = prix;
 	}
 
-
-
-
 	public List<TypeProduit> getTypeProduits() {
 		return typeProduits;
 	}
 
-
-
-
 	public void setTypeProduits(List<TypeProduit> typeProduits) {
 		this.typeProduits = typeProduits;
 	}
-
-
-
-
-	
-
-	
-	
-	
-	
-	
 
 }

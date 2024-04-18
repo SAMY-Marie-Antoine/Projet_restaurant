@@ -24,6 +24,15 @@ public abstract class Compte {
 	
 	public Compte() {}
 
+	public Compte(Integer id, String username) {
+		this.id = id;
+		this.username = username;
+	}
+	
+	public Compte(String username) {
+		this.username = username;
+	}
+
 	public Integer getId() {
 		return id;
 	}

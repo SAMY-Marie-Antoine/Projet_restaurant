@@ -32,13 +32,35 @@ public class Avis {
 	
 	public Avis() {}
 
-	
 	public Avis(Integer id, String avis, Client client, Commande commande, LocalDateTime dateHeure) {
 		this.id = id;
 		this.avis = avis;
 		this.client = client;
 		this.commande = commande;
 		this.dateHeure = LocalDateTime.now();
+	}
+
+	public Avis(String avis, Client client, Commande commande, LocalDateTime dateHeure) {
+		this.avis = avis;
+		this.client = client;
+		this.commande = commande;
+		this.dateHeure = LocalDateTime.now();
+	}
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public LocalDateTime getDateHeure() {
+		return this.dateHeure;
+	}
+
+	public void setDateHeure(LocalDateTime dateHeure) {
+		this.dateHeure = dateHeure;
 	}
 
 	public String getAvis() {

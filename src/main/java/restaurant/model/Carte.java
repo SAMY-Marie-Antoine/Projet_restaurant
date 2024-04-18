@@ -1,23 +1,35 @@
 package restaurant.model;
 
-public class Carte {
-	private int id;
+@Entity
+//Info selon mapping inheritence choisi dans Article
+public class Carte extends Article {
+
+	@Column(columnDefinition="INT",nullable=false)
+	private int quantite;
+	@OneToOne
 	private Produit produit;
 	
+
+	public Carte() {}
 	
-	public Carte(int id, Produit produit) {
-		this.id = id;
+	public Carte(Integer id, DetailCommande detailCommande,int quantite, Produit produit) {
+		super(id, detailCommande);
+		this.quantite = quantite;
+		this.produit = produit;
+	}	
+	
+	public Carte(DetailCommande detailCommande,int quantite, Produit produit) {
+		super(detailCommande);
+		this.quantite = quantite;
 		this.produit = produit;
 	}
 
-
-	public int getId() {
-		return id;
+	public int getQuantite() {
+		return this.quantite;
 	}
 
-
-	public void setId(int id) {
-		this.id = id;
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
 	}
 
 
@@ -30,14 +42,13 @@ public class Carte {
 		this.produit = produit;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Carte [id=" + id + ", produit=" + produit + "]";
+		return "{" +
+			" id='" + super.getId() + "'" +
+			", quantite='" + getQuantite() + "'" +
+			", produit='" + getProduit() + "'" +
+			"}";
 	}
 	
-	
-	
-	
-
 }
