@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import restaurant.dao.IDAOProduit;
 import restaurant.model.Produit;
 
 @Service
@@ -57,4 +58,7 @@ public class ProduitService {
 		daoProduit.deleteById(id);
 	}
 		
+	public List<Produit> findAllByType(TypeProduit type) {
+		return daoProduit.findByType(type);
+	}
 }
