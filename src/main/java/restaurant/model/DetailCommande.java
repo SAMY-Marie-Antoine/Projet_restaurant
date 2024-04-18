@@ -1,17 +1,29 @@
 package restaurant.model;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 public class DetailCommande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	@Column
+	private int qty;
+	@Column
 	private double prix;
+	@Column
+	@ManyToOne
 	private Commande commande;
-	private Produit produit;
+	//private Produit produit;
+	@ManyToOne   //@MANYTOMANY
+	private Produit produitPosteCommande;
+	@Column
+	private Boolean isFormule;
+	
+	
 	
 	
 	
@@ -20,26 +32,72 @@ public class DetailCommande {
 	}
 	
 	
-	public DetailCommande(Integer id, double prix, Commande commande, Article article, Produit produit) {
+	/*public DetailCommande(Integer id, double prix, Commande commande, Article article, Produit produit) {
 		this.id = id;
 		this.prix = prix;
 		this.commande = commande;
 		this.article = article;
 		this.produit = produit;
-	}
+	}*/
 	
-	public DetailCommande(double prix, Commande commande, Article article, Produit produit) {
+	
+	
+	/*public DetailCommande(double prix, Commande commande, Article article, Produit produit) {
 		super();
 		this.prix = prix;
 		this.commande = commande;
 		this.article = article;
 		this.produit = produit;
-	}
+	}*/
+	
 
 
 	public Integer getId() {
 		return id;
 	}
+	public DetailCommande(Integer id, int qty, double prix, Commande commande, Produit produitPosteCommande,
+			Boolean isFormule, Produit produit) {
+		super();
+		this.id = id;
+		this.qty = qty;
+		this.prix = prix;
+		this.commande = commande;
+		this.produitPosteCommande = produitPosteCommande;
+		this.isFormule = isFormule;
+		this.produit = produit;
+	}
+
+
+	public int getQty() {
+		return qty;
+	}
+
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+
+	public Produit getProduitPosteCommande() {
+		return produitPosteCommande;
+	}
+
+
+	public void setProduitPosteCommande(Produit produitPosteCommande) {
+		this.produitPosteCommande = produitPosteCommande;
+	}
+
+
+	public Boolean getIsFormule() {
+		return isFormule;
+	}
+
+
+	public void setIsFormule(Boolean isFormule) {
+		this.isFormule = isFormule;
+	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
