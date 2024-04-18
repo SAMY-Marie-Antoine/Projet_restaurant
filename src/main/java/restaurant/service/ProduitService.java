@@ -36,7 +36,7 @@ public class ProduitService {
 	public Produit insert(Produit produit) 
 	{
 		
-		return daoProduit.save(Produit);
+		return daoProduit.save(produit);
 	}
 	
 	public Produit update(Produit produit) 
@@ -46,12 +46,12 @@ public class ProduitService {
 			throw new RuntimeException("Besoin d'un id pour faire une mise à jour.");
 		}
 		
-		return daoProduit.save(Produit);
+		return daoProduit.save(produit);
 	}
 	
-	public void delete(Produit Produit) 
+	public void delete(Produit produit) 
 	{
-		daoProduit.delete(Produit);
+		daoProduit.delete(produit);
 	}
 	public void deleteById(Integer id) 
 	{
