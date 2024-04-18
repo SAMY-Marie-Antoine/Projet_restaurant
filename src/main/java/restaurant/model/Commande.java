@@ -30,100 +30,129 @@ public class Commande {
 	@JsonView(Views.Common.class)
 	private Integer id;
 	@ManyToOne
-<<<<<<< HEAD
 	@JsonView(Views.CommandeWithVentes.class)
 	private Client client;
 	@OneToOne
 	@JsonView(Views.Common.class)
-=======
-	//@JoinColumn(name="")
-	private Client client;
-	@OneToOne
-	//@JoinColumn(name="")
->>>>>>> f6a1fc58eacf94c5321b061db740fad494c5120e
+
 	private Avis avis;
-	//@JoinColumn(name="")
-	@OneToMany
-<<<<<<< HEAD
+	@OneToMany(mappedBy = "commande")
 	@JsonView(Views.DetailCommandeWithVentes.class)
-=======
 	//@JoinColumn(name="")
->>>>>>> f6a1fc58eacf94c5321b061db740fad494c5120e
 	private List<DetailCommande> detailCommandes;
 	@Column(length=140)
 	private String commentaire;
-	@Column(nullable=false,columnDefinition="DATETIME")
+	@Column(nullable=false,columnDefinition="DATE")
 	@JsonView(Views.Common.class)
-	private LocalDateTime dateHeureCommande;
+	private LocalDate dateCommande;
+	@Column(nullable=false,columnDefinition="TIME")
+	@JsonView(Views.Common.class)
+	private LocalTime heureCommande;
 		
 	public Commande() {	}
 
-	public Commande(Integer id, Client client, Avis avis, List<DetailCommande> detailCommandes, String commentaire) {
-		this.id = id;
-		this.client = client;
-		this.avis = avis;
-		this.detailCommandes = detailCommandes;
-		this.commentaire = commentaire;
-		this.dateHeureCommande = LocalDateTime.now();
-	}
 
-	public Commande(Client client, Avis avis, List<DetailCommande> detailCommandes, String commentaire) {
-		this.client = client;
-		this.avis = avis;
-		this.detailCommandes = detailCommandes;
-		this.commentaire = commentaire;
-		this.dateHeureCommande = LocalDateTime.now();
-	}
+
+
+	//#Todo
 
 	public Integer getId() {
 		return id;
 	}
 
+
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+
 
 	public Client getClient() {
 		return client;
 	}
 
+
+
+
 	public void setClient(Client client) {
 		this.client = client;
 	}
 
-	public String getCommentaire() {
-		return commentaire;
-	}
 
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
+
 
 	public Avis getAvis() {
-		return this.avis;
+		return avis;
 	}
+
+
+
 
 	public void setAvis(Avis avis) {
 		this.avis = avis;
 	}
 
+
+
+
 	public List<DetailCommande> getDetailCommandes() {
-		return this.detailCommandes;
+		return detailCommandes;
 	}
+
+
+
 
 	public void setDetailCommandes(List<DetailCommande> detailCommandes) {
 		this.detailCommandes = detailCommandes;
 	}
 
-	public LocalDateTime getDateHeureCommande() {
-		return this.dateHeureCommande;
+
+
+
+	public String getCommentaire() {
+		return commentaire;
 	}
 
-	public void setDateHeureCommande(LocalDateTime dateHeureCommande) {
-		this.dateHeureCommande = dateHeureCommande;
+
+
+
+	public void setCommentaire(String commentaire) {
+		this.commentaire = commentaire;
 	}
 
-	//#Todo
+
+
+
+	public LocalDate getDateCommande() {
+		return dateCommande;
+	}
+
+
+
+
+	public void setDateCommande(LocalDate dateCommande) {
+		this.dateCommande = dateCommande;
+	}
+
+
+
+
+	public LocalTime getHeureCommande() {
+		return heureCommande;
+	}
+
+
+
+
+	public void setHeureCommande(LocalTime heureCommande) {
+		this.heureCommande = heureCommande;
+	}
+
+
+
 
 	public double calculPrixTotal() {
 		
@@ -135,7 +164,7 @@ public class Commande {
 		for (idx = 0; idx < this.detailCommandes.size(); idx++) {
 			dCmd  = this.detailCommandes.get(idx);
 		
-			montant=montant+ dCmd.getPrix();
+			montant=montant+ dCmd.getPrix() * dCmd.getQty();
 		}
 		return montant;
 	
