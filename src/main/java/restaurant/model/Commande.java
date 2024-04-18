@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,10 @@ public class Commande {
 	@Column(nullable = false,length = 35 )
 	@ManyToOne
 	private Client client;
+	@OneToOne
+	private Avis avis;
+	@OneToMany
+	private List<DetailCommande> detailCommandes;
 	@Column
 	private String commentaire;
 	@Column
