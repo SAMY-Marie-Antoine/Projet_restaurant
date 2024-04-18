@@ -32,25 +32,25 @@ public class ClientService {
 		return daoClient.findAllClient();
 	}
 	
-	public Client insert(Client Client) 
+	public Client insert(Client client) 
 	{
 		
-		return daoClient.save(Client);
+		return daoClient.save(client);
 	}
 	
-	public Client update(Client Client) 
+	public Client update(Client client) 
 	{
 		if(Client.getId()==null) 
 		{
 			throw new RuntimeException("Besoin d'un id pour faire une mise à jour.");
 		}
 		
-		return daoClient.save(Client);
+		return daoClient.save(client);
 	}
 	
-	public void delete(Client Client) 
+	public void delete(Client client) 
 	{
-		daoClient.delete(Client);
+		daoClient.delete(client);
 	}
 	public void deleteById(Integer id) 
 	{

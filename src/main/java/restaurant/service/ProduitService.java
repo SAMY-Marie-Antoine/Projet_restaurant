@@ -33,13 +33,13 @@ public class ProduitService {
 		return daoProduit.findAllProduit();
 	}
 	
-	public Produit insert(Produit Produit) 
+	public Produit insert(Produit produit) 
 	{
 		
 		return daoProduit.save(Produit);
 	}
 	
-	public Produit update(Produit Produit) 
+	public Produit update(Produit produit) 
 	{
 		if(Produit.getId()==null) 
 		{
